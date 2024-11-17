@@ -1,184 +1,145 @@
-<p align="center"><img src="tgpt.svg"></p>
+Here's the README content provided as code:  
 
-# Terminal GPT (tgpt) 🚀
+```markdown
+# **Terminal GPT (tgpt) 🚀**
 
-[![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/aandrew-me/tgpt)](https://github.com/aandrew-me/tgpt)
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/aandrew-me/tgpt)](https://github.com/aandrew-me/tgpt/releases/latest)
-![Arch Linux package](https://img.shields.io/archlinux/v/extra/x86_64/tgpt)
+![GitHub Go Version](https://img.shields.io/github/go-mod/go-version/aandrew-me/tgpt)  
+![GitHub Release](https://img.shields.io/github/v/release/aandrew-me/tgpt)  
+![Arch Linux Package](https://img.shields.io/archlinux/v/extra/x86_64/tgpt)  
 ![Chocolatey Version](https://img.shields.io/chocolatey/v/tgpt)
 
-tgpt is a cross-platform command-line interface (CLI) tool that allows you to use AI chatbot in your Terminal without requiring API keys. 
+> **A versatile, cross-platform AI-powered command-line interface for chatting and generating images directly from your terminal!**
 
-### Currently available providers: 
-- [Blackbox AI](https://www.blackbox.ai/) (Blackbox model)
-- [Duckduckgo](https://duckduckgo.com/aichat) (Supports several models)
-- [Groq](https://groq.com/) (Requires a free API Key. LLaMA2-70b & Mixtral-8x7b)
-- [KoboldAI](https://koboldai-koboldcpp-tiefighter.hf.space/)  (koboldcpp/HF_SPACE_Tiefighter-13B)
-- [Ollama](https://www.ollama.com/) (Supports many models)
-- [OpenAI](https://platform.openai.com/docs/guides/text-generation/chat-completions-api) (All models, Requires API Key, supports custom endpoints)
-- [Phind](https://www.phind.com/agent) (Phind Model)
+<p align="center">
+  <img src="tgpt.svg" alt="tgpt logo" width="200">
+</p>
 
-**Image Generation Model**: BlackBoxAi
+---
 
-## Usage 
+## 🌟 **Key Features**
+- **Providers Supported**: Works with popular AI providers like OpenAI, Blackbox AI, Phind, and more.
+- **No API Key Needed**: Some providers like DuckDuckGo don't require an API key.
+- **Image Generation**: Generate stunning visuals using Blackbox AI.
+- **Interactive Modes**: Enjoy both standard and multiline interactive chat modes.
+- **Advanced Options**: Customize AI behavior with options like temperature, model selection, and more.
 
-```
-Usage: tgpt [Flags] [Prompt]
+---
 
-Flags:
--s, --shell                                        Generate and Execute shell commands. (Experimental) 
--c, --code                                         Generate Code. (Experimental)
--q, --quiet                                        Gives response back without loading animation
--w, --whole                                        Gives response back as a whole text
--img, --image                                      Generate images from text
---provider                                         Set Provider. Detailed information has been provided below. (Env: AI_PROVIDER)
+## 📚 **Usage**
 
-Some additional options can be set. However not all options are supported by all providers. Not supported options will just be ignored.
---model                                            Set Model
---key                                              Set API Key
---url                                              Set OpenAI API endpoint url
---temperature                                      Set temperature
---top_p                                            Set top_p
---max_length                                       Set max response length
---log                                              Set filepath to log conversation to (For interactive modes)
---preprompt                                        Set preprompt
--y                                                 Execute shell command without confirmation
-
-Options:
--v, --version                                      Print version 
--h, --help                                         Print help message 
--i, --interactive                                  Start normal interactive mode 
--m, --multiline                                    Start multi-line interactive mode 
--cl, --changelog                                   See changelog of versions 
--u, --update                                       Update program 
---disable-input-limit                              Disables the checking of 4000 character input limit
-
-Providers:
-The default provider is phind. The AI_PROVIDER environment variable can be used to specify a different provider.
-Available providers to use: blackboxai, duckduckgo, groq, koboldai, ollama, openai and phind
-
-Provider: blackboxai
-Uses BlackBox model. Great for developers
-
-Provider: duckduckgo
-Available models: gpt-4o-mini (default), meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo, mistralai/Mixtral-8x7B-Instruct-v0.1, claude-3-haiku-20240307
-
-Provider: groq
-Requires a free API Key. Supports LLaMA2-70b & Mixtral-8x7b
-
-Provider: koboldai
-Uses koboldcpp/HF_SPACE_Tiefighter-13B only, answers from novels
-
-Provider: ollama
-Needs to be run locally. Supports many models
-
-Provider: openai
-Needs API key to work and supports various models. Recognizes the OPENAI_API_KEY and OPENAI_MODEL environment variables. Supports custom urls with --url
-
-Provider: phind
-Uses Phind Model. Great for developers
-
-Examples:
-tgpt "What is internet?"
-tgpt -m
-tgpt -s "How to update my system?"
-tgpt --provider duckduckgo "What is 1+1"
-tgpt --provider openai --key "sk-xxxx" --model "gpt-3.5-turbo" "What is 1+1"
-cat install.sh | tgpt "Explain the code"
+```bash
+tgpt [Flags] [Prompt]
 ```
 
-![demo](https://user-images.githubusercontent.com/66430340/233759296-c4cf8cf2-0cab-48aa-9e84-40765b823282.gif)
+### **Command Flags**
+| Flag              | Description                                    |
+|-------------------|------------------------------------------------|
+| `-s, --shell`     | Generate and execute shell commands. (Experimental) |
+| `-c, --code`      | Generate code snippets. (Experimental)         |
+| `-q, --quiet`     | Output response without loading animation      |
+| `-w, --whole`     | Return response as a complete text block       |
+| `-img, --image`   | Generate images from text input                |
+| `--provider`      | Set the AI provider. Default: `phind`          |
+| `--model`         | Specify the AI model (provider-dependent)      |
+| `--key`           | Set API key for services like OpenAI           |
+| `--temperature`   | Adjust creativity (higher values are more random) |
+| `--max_length`    | Set the maximum response length                |
 
-## Installation ⏬
+---
 
-### Download for GNU/Linux 🐧 or MacOS 🍎
+### **Providers**
+| Provider         | Features                                       |
+|------------------|------------------------------------------------|
+| **Phind**        | Default provider; developer-friendly.          |
+| **OpenAI**       | Supports multiple models with API key.         |
+| **DuckDuckGo**   | Offers GPT-4o-mini and other models.           |
+| **Blackbox AI**  | Tailored for coding-related tasks.             |
+| **Groq**         | Requires free API key; supports LLaMA2-70b.    |
+| **KoboldAI**     | Creative and novel-style text generation.      |
 
-The default download location is `/usr/local/bin`, but you can change it in the command to use a different location. However, make sure the location is added to your PATH environment variable for easy accessibility.
+---
 
-You can download it with the following command:
+## ✨ **Examples**
 
+```bash
+# Simple Prompt
+tgpt "Explain quantum mechanics in simple terms."
+
+# Use a Specific Provider
+tgpt --provider openai --key "sk-xxx" "Write a Python script to reverse a string."
+
+# Interactive Mode
+tgpt -i
+```
+
+---
+
+## 🚀 **Installation**
+
+### **GNU/Linux and macOS**
 ```bash
 curl -sSL https://raw.githubusercontent.com/aandrew-me/tgpt/main/install | bash -s /usr/local/bin
 ```
 
-If you are using Arch Linux, you can install with pacman:
+### **Windows**
+- **Scoop**:  
+  ```bash
+  scoop install https://raw.githubusercontent.com/aandrew-me/tgpt/main/tgpt.json
+  ```
+- **Chocolatey**:  
+  ```bash
+  choco install tgpt
+  ```
 
+### **FreeBSD**
 ```bash
-pacman -S tgpt
-```
-
-
-### FreeBSD 😈 
-
-To install the [port](https://www.freshports.org/www/tgpt):
-```
-cd /usr/ports/www/tgpt/ && make install clean
-```
-To install the package, run one of these commands:
-```
-pkg install www/tgpt
 pkg install tgpt
 ```
 
-### Install with Go
-You need to [add the Go install directory to your system's shell path](https://go.dev/doc/tutorial/compile-install). 
+---
 
-```bash
-go install github.com/aandrew-me/tgpt/v2@latest
-```
-
-### Windows 🪟
-
--   **Scoop:** Package installation with [Scoop](https://scoop.sh/) can be done using the following command:
-
-    ```bash
-    scoop install https://raw.githubusercontent.com/aandrew-me/tgpt/main/tgpt.json
-    ```
-- **Chocolatey** 
-    ```bash
-    choco install tgpt
-    ```    
-
-## Updating ⬆️
-If you installed the program with the installation script, you may update it with
+## 🔧 **Updating**
 ```bash
 tgpt -u
 ```
-**It may require admin privileges.**
-### Proxy
 
-Support:
+---
 
-1. environment variable
+## 🌐 **Proxy Support**
+**Configuration Options**:
+- Environment Variables:  
+  Set `http_proxy`, `HTTP_PROXY`, or equivalent for socks5.
+- Configuration File:  
+  Place your proxy settings in a file at `~/.config/tgpt/proxy.txt`.
 
-http_proxy or HTTP_PROXY with following available formats:
-
-- Http Proxy [ `http://ip:port` ]
-- Http Auth [ `http://user:pass@ip:port` ]
-- Socks5 Proxy [ `socks5://ip:port ]`
-- Socks5 Auth [ `socks5://user:pass@ip:port` ]
-
-2. configuration file
-
-file location in the following order:
-
-- ./proxy.txt (in the same directory from where you are executing)
-- ~/.config/tgpt/proxy.txt
-
-Example:
-
-```bash
+Example (`proxy.txt`):
+```
 http://127.0.0.1:8080
 ```
 
-### From Release
+---
 
-You can download the executable for your operating system, rename it to `tgpt` (or any other desired name), and then execute it by typing `./tgpt` while in that directory. Alternatively, you can add it to your PATH environmental variable and then execute it by simply typing `tgpt`.
-
-
-## Uninstalling
-If you installed with the install script, you can execute the following command to remove the tgpt executable
-```
+## 📥 **Uninstallation**
+```bash
 sudo rm $(which tgpt)
 ```
-Configuration file is usually located in `~/.config/tgpt` on GNU/Linux Systems and in `"Library/Application Support/tgpt"` on MacOS
+
+---
+
+## 🎥 **Demo**
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/66430340/233759296-c4cf8cf2-0cab-48aa-9e84-40765b823282.gif" alt="Demo gif" width="700">
+</p>
+
+---
+
+### 🙌 **Contributing**
+We welcome contributions! Feel free to open issues or pull requests to improve tgpt.
+
+---
+
+### 📝 **License**
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+```
+
